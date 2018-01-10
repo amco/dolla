@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'dolla'
+require 'test_helper'
 
 describe Dolla do
   describe "test dolla version" do
