@@ -24,7 +24,7 @@ class AmountTest < ActiveSupport::TestCase
   end
 
   test 'hash will change if amount is changed' do
-    assert @amount.stubs( :value).returns( "120050" )
+    assert @amount.stub(:value).and_return("120050")
     assert_not_equal 6, @amount.hash
   end
 

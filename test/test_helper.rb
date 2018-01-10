@@ -5,6 +5,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'active_support'
 require 'factory_bot'
+require 'rails'
 
 require 'active_record'
 require 'symbolize/active_record'
