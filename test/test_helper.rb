@@ -5,6 +5,13 @@ require 'minitest/pride'
 require 'active_support'
 require 'factory_girl'
 
+require 'active_record'
+require 'symbolize/active_record'
+
+puts "Using ActiveRecord #{ActiveRecord::VERSION::STRING}"
+
+ActiveRecord::Base.send :include, Symbolize::ActiveRecord
+
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end

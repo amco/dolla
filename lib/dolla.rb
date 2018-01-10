@@ -1,5 +1,5 @@
 require "dolla/version"
 
 module Dolla
-  # Your code goes here...
+  autoload :CardNumberPrefix, 'dolla/card_number_prefix'
 end

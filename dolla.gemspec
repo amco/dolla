@@ -34,4 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 4.7.5"
   spec.add_development_dependency "factory_girl", "~> 4.5.0"
+  spec.add_runtime_dependency 'activerecord'
+  spec.add_development_dependency 'symbolize'
 end
