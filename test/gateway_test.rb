@@ -128,7 +128,7 @@ module Dolla
     end
 
     def non_amex_fields
-      assert visa_card = FactoryGirl.create(:visa_card)
+      assert visa_card = FactoryBot.create(:visa_card)
       {
         "val_16"=>visa_card.bank_code,
         "val_17"=> Dolla::Gateway::TRANSACTION_TYPE,

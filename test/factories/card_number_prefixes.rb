@@ -1,6 +1,6 @@
 require 'test_helper'
 
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :card_number_prefix, class: Dolla::CardNumberPrefix do
     sequence(:prefix) { |n| "1#{ '%05i' % n }" }

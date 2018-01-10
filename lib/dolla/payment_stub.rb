@@ -32,7 +32,7 @@ module Dolla
     end
 
     def card_type
-      @card_type ||= FactoryGirl.create(:visa_card )
+      @card_type ||= FactoryBot.create(:visa_card )
     end
 
     def card_type_bank_code
