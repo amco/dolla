@@ -5,18 +5,6 @@ module Dolla
     include Terms
     include EncryptionTools
 
-    #TODO: Move this constants to a config file
-    BUSINESS_UNIT         = 0
-    PAYMENT_GATEWAY_CODE  = 272
-    CANCEL_GATEWAY_CODE   = 3
-    CURRENCY              = 0
-    CLIENT_ID             = 10894
-    ADMIN_EMAIL           = 'payment_gateways@amcoonline.net'.freeze
-    TRANSACTION_TYPE      = 0
-    PLATFORM              = 7
-    PAYMENT               = 'PAGO'.freeze
-    CANCELLATION          = 'CANCELACION'.freeze
-
     ACTIONS = {
       :default => {
         :cancel_purchase    => :reverso_tdc_interred,
