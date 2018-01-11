@@ -8,6 +8,7 @@ module Dolla
   autoload :Options, 'dolla/options'
   autoload :EndPoints, 'dolla/end_points'
   autoload :Amount, 'dolla/payment_slip/amount'
+  autoload :DueDate, 'dolla/payment_slip/due_date'
   autoload :Terms, 'dolla/terms'
   autoload :EncryptionTools, 'dolla/encryption_tools'
 end

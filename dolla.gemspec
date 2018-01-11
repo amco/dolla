@@ -37,4 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'activerecord'
   spec.add_development_dependency 'symbolize'
   spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'ruby-hmac'
+  spec.add_development_dependency 'crypt19-rb'
 end

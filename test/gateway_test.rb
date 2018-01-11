@@ -93,7 +93,7 @@ module Dolla
     end
 
     test 'Amex payment body hash' do
-      assert @payment.stubs(:amex?).returns(true)
+      assert @payment.stub(:amex?).and_return(true)
       assert expected = default_fields( "titular", "c" ).merge!( amex_fields )
       assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
     end
