@@ -35,7 +35,7 @@ module Dolla
     end
 
     def payments_gateway
-      @client ||= Savon::Client.new do
+      @client ||= ::Savon::Client.new do
         wsdl.endpoint   = wsdl_address
         wsdl.namespace  = xml_namespace
       end

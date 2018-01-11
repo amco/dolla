@@ -2,11 +2,16 @@ module Dolla
   class CardNumberPrefix
     attr_accessor :prefix, :bank
 
+    def initialize(args = {})
+      @prefix = args[:prefix]
+      @bank = args[:bank]
+    end
+
     def self.is_amex
       prefixes = ::Dolla::CardPrefix::Amex::PREFIXES
 
       prefixes.map do |prefix|
-        self.new(prefix: prefix, bank: :amex)
+        new(prefix: prefix, bank: :amex)
       end
     end
 

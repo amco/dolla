@@ -8,10 +8,6 @@ module Dolla
       assert other = 2.times{  FactoryBot.build :card_number_prefix }
     end
 
-    test 'is amex scope only returns amex cards' do
-      assert_equal @amex_objects, CardNumberPrefix.is_amex.to_a
-    end
-
     test 'with prefixes can handle numeric values' do
       @amex_objects.each do |card_number_prefix|
         assert card_number = "#{card_number_prefix.prefix}#{card_number_trail}".to_i

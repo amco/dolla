@@ -1,4 +1,5 @@
 require "dolla/version"
+require "savon"
 
 module Dolla
   autoload :CardNumberPrefix, 'dolla/card_number_prefix'
