@@ -13,6 +13,7 @@ module Dolla
   autoload :Terms, 'dolla/terms'
   autoload :EncryptionTools, 'dolla/encryption_tools'
   autoload :RequestBuilder, 'dolla/request_builder'
+  autoload :CardType, 'dolla/card_type'
 
   module CardPrefix
     autoload :Amex, 'dolla/card_prefix/amex'
