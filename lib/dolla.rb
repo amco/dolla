@@ -11,4 +11,8 @@ module Dolla
   autoload :DueDate, 'dolla/payment_slip/due_date'
   autoload :Terms, 'dolla/terms'
   autoload :EncryptionTools, 'dolla/encryption_tools'
+
+  module CardPrefix
+    autoload :Amex, 'dolla/card_prefix/amex'
+  end
 end

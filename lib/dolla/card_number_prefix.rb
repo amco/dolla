@@ -1,11 +1,14 @@
 module Dolla
-  class CardNumberPrefix < ActiveRecord::Base
+  class CardNumberPrefix
+    attr_accessor :prefix, :bank
 
-    symbolize :bank, in: %i/hsbc bancomer banamex amex scotia santander/
+    def self.is_amex
+      prefixes = ::Dolla::CardPrefix::Amex::PREFIXES
 
-    scope :with_prefix, ->( card_number ) { where( prefix: card_number.to_s[0..5] )  }
-    scope :is_amex, -> { where( bank: :amex ) }
-    scope :card_number_is_amex, ->(card_number) { is_amex.with_prefix( card_number ) }
+      prefixes.map do |prefix|
+        self.new(prefix: prefix, bank: :amex)
+      end
+    end
 
     def self.card_number_is_amex? number
       number.to_s.match /^(34|37)/
