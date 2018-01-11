@@ -30,6 +30,20 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+Finally add a file called `.env.development` in the root path with your credentials to use these like environment variables:
+- BUSINESS_UNIT = _number_
+- PAYMENT_GATEWAY_CODE = _number_
+- CANCEL_GATEWAY_CODE = _number_
+- CURRENCY              = _number_
+- CLIENT_ID             = _number_
+- ADMIN_EMAIL           = _string_
+- TRANSACTION_TYPE      = _number_
+- PLATFORM              = _number_
+- PAYMENT               = _string_
+- CANCELLATION          = _string_
+- RIJNDAEL = _string_
+- HMAC_KEY = _string_
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dolla. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

@@ -7,6 +7,8 @@ require 'active_support'
 require 'factory_bot'
 require 'rails'
 require 'timecop'
+require 'dotenv'
+Dotenv.load('.env.development')
 
 require 'active_record'
 require 'symbolize/active_record'
