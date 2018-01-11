@@ -96,7 +96,7 @@ module Dolla
 
     test 'default body fields' do
       @payment.stub :amex?, false do
-        assert_equal default_fields
+        assert_equal default_fields, @payment.build_payment_body.to_hash
       end
     end
 
@@ -110,7 +110,7 @@ module Dolla
     test 'Amex payment body hash' do
       @payment.stub :amex?, true do
         assert expected = default_fields( "titular", "c" ).merge!( amex_fields )
-        assert_equal expected.merge(order!: expected.keys)
+        assert_equal expected.merge(order!: expected.keys), @payment.build_default_payment_body.to_hash
       end
     end
 
@@ -147,12 +147,12 @@ module Dolla
       assert visa_card = FactoryBot.build(:visa_card)
       {
         "val_16"=>visa_card.bank_code,
-        "val_17"=> Dolla::Gateway::TRANSACTION_TYPE,
+        "val_17"=> ENV['TRANSACTION_TYPE'],
         "val_18"=>'',
-        "email_admin"=>Dolla::Gateway::ADMIN_EMAIL,
+        "email_admin"=>ENV['ADMIN_EMAIL'],
         "accion"=> 'PAGO',
         "nu_afiliacion"=>'',
-        "nu_plataforma"=>Dolla::Gateway::PLATFORM,
+        "nu_plataforma"=>ENV['PLATFORM'],
         "TAG5F34"=>'',
         "TAGSEMV"=>'',
         "sFlag"=>'',
