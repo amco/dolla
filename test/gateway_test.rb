@@ -96,7 +96,7 @@ module Dolla
 
     test 'default body fields' do
       @payment.stub :amex?, false do
-        assert_equal default_fields, @payment.build_payment_body.to_hash
+        assert_equal default_fields, @payment.default_body_fields.to_hash
       end
     end
 
@@ -110,7 +110,7 @@ module Dolla
     test 'Amex payment body hash' do
       @payment.stub :amex?, true do
         assert expected = default_fields( "titular", "c" ).merge!( amex_fields )
-        assert_equal expected.merge(order!: expected.keys), @payment.build_default_payment_body.to_hash
+        assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
       end
     end
 
@@ -165,9 +165,9 @@ module Dolla
       {
         "s_transm"=>@payment.payment_id,
         "c_referencia"=> @payment.code,
-        "val_1"=>0,
-        "t_servicio"=>272,
-        "#{transaction_type}_cur"=>0,
+        "val_1"=>'0',
+        "t_servicio"=>'272',
+        "#{transaction_type}_cur"=>"0",
         "t_importe"=>@payment.amount.to_s,
         name_field=>@payment.full_name,
         "val_3" => @payment.encrypted_customer_info[:cc],
@@ -176,7 +176,7 @@ module Dolla
         "val_6" => @payment.encrypted_customer_info[:hmac],
         "val_11" => @payment.email,
         "val_12" => @payment.phone_number,
-        "clave_entidad"=>10894,
+        "clave_entidad"=>"10894",
         "val_19"=>0,
         "val_20"=>1,
       }
