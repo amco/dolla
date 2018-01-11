@@ -1,4 +1,5 @@
 require "dolla/version"
+require "savon"
 
 module Dolla
   autoload :CardNumberPrefix, 'dolla/card_number_prefix'
@@ -11,6 +12,7 @@ module Dolla
   autoload :DueDate, 'dolla/payment_slip/due_date'
   autoload :Terms, 'dolla/terms'
   autoload :EncryptionTools, 'dolla/encryption_tools'
+  autoload :RequestBuilder, 'dolla/request_builder'
 
   module CardPrefix
     autoload :Amex, 'dolla/card_prefix/amex'

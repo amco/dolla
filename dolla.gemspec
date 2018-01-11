@@ -35,8 +35,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.1"
   spec.add_development_dependency "factory_bot"
   spec.add_runtime_dependency 'activerecord'
-  spec.add_development_dependency 'symbolize'
-  spec.add_development_dependency 'rails'
-  spec.add_development_dependency 'ruby-hmac'
-  spec.add_development_dependency 'crypt19-rb'
+  spec.add_dependency 'symbolize'
+  spec.add_dependency 'rails'
+  spec.add_dependency 'ruby-hmac'
+  spec.add_dependency 'crypt19-rb'
+  spec.add_dependency 'savon'
 end
