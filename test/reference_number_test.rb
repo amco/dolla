@@ -29,8 +29,9 @@ class ReferenceNumberTest < ActiveSupport::TestCase
   end
 
   test 'amount change and reference is changed' do
-    assert @reference.stubs(:amount).returns( @params[:amount]+20 )
-    assert_not_equal "1588257031992-76", @reference.number
+    @reference.stub :amount, @params[:amount]+20 do
+      assert_not_equal "1588257031992-76", @reference.number
+    end
   end
 
 end

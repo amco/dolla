@@ -13,7 +13,6 @@ require 'symbolize/active_record'
 puts "Using ActiveRecord #{ActiveRecord::VERSION::STRING}"
 
 ActiveRecord::Base.send :include, Symbolize::ActiveRecord
-# ActiveRecord::Base.establish_connection(DATABSE_CONFIG[DATABASE_ENV])
 
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods

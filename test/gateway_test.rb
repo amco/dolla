@@ -19,83 +19,99 @@ module Dolla
     end
 
     test 'wsdl address is from amex' do
-      assert @payment.stubs(:amex?).returns(true)
-      assert_equal EndPoints::TESTING_URL[:amex], @payment.wsdl_address
+      @payment.stub :amex?, true do
+        assert_equal EndPoints::TESTING_URL[:amex], @payment.wsdl_address
+      end
     end
 
     test 'wsdl address for none-amex' do
-      assert @payment.stubs(:amex?).returns(false)
-      assert_equal EndPoints::TESTING_URL[:default], @payment.wsdl_address
+      @payment.stub :amex?, false do
+        assert_equal EndPoints::TESTING_URL[:default], @payment.wsdl_address
+      end
     end
 
     test 'xmlnamespace is from amex' do
-      assert @payment.stubs(:amex?).returns(true)
-      assert_equal EndPoints::XML_NAMESPACE[:amex], @payment.xml_namespace
+      @payment.stub :amex?, true do
+        assert_equal EndPoints::XML_NAMESPACE[:amex], @payment.xml_namespace
+      end
     end
 
     test 'xmlnamespace for none-amex' do
-      assert @payment.stubs(:amex?).returns(false)
-      assert_equal EndPoints::XML_NAMESPACE[:default], @payment.xml_namespace
+      @payment.stub :amex?, false do
+        assert_equal EndPoints::XML_NAMESPACE[:default], @payment.xml_namespace
+      end
     end
 
     test 'returns soap actions for amex' do
-      assert @payment.stubs(:amex?).returns(true)
-      assert Gateway::ACTIONS[:amex].values.include?( @payment.soap_action(:process_purchase) )
+      @payment.stub :amex?, true do
+        assert Gateway::ACTIONS[:amex].values.include?( @payment.soap_action(:process_purchase) )
+      end
     end
 
     test 'returns soap actions for visa or mc' do
-      assert @payment.stubs(:amex?).returns(false)
-      assert Dolla::Gateway::ACTIONS[:default].values.include? @payment.soap_action(:process_purchase)
+      @payment.stub :amex?, false do
+        assert Dolla::Gateway::ACTIONS[:default].values.include? @payment.soap_action(:process_purchase)
+      end
     end
 
     test 'amex? is true if card_number_is_amex' do
-      assert CardNumberPrefix.stubs(:card_number_is_amex?).returns(true)
-      assert @payment.amex?
+      CardNumberPrefix.stub :card_number_is_amex?, true do
+        assert @payment.amex?
+      end
     end
 
     test 'amex? is false when card number is no amex' do
-       assert CardNumberPrefix.stubs(:card_number_is_amex?).returns(false)
-       assert_not @payment.amex?
+       CardNumberPrefix.stub :card_number_is_amex?, false do
+        assert_not @payment.amex?
+       end
     end
 
     test 'full name is name and last name' do
-      assert @payment.stubs(:name).returns('Juana')
-      assert @payment.stubs(:last_name).returns('Bananas')
-      assert 'Juana Bananas', @payment.full_name
+      @payment.stub :name, 'Juana' do
+        @payment.stub :last_name, 'Bananas' do
+          assert 'Juana Bananas', @payment.full_name
+        end
+      end
     end
 
     test 'decimal amount will transform number into decimals' do
-      assert @payment.stubs(:amount).returns(666.666)
-      assert "666.66", @payment.decimal_amount
+      @payment.stub :amount, 666.666 do
+        assert "666.66", @payment.decimal_amount
+      end
     end
 
     test 'build payment body will build amex payment body' do
-      assert @payment.expects(:build_amex_payment_body).once.returns(true)
-      assert @payment.stubs(:amex?).returns(true)
-      assert @payment.build_payment_body
+      @payment.stub :amex?, true do
+        assert @payment.build_payment_body
+      end
     end
 
     test 'build payment body will build normal body request' do
-      assert @payment.expects(:build_payment_body).once.returns(true)
-      assert @payment.stubs(:amex?).returns(false)
-      assert @payment.build_payment_body
+      @payment.stub :build_payment_body, true do
+        @payment.stub :amex?, false do
+          assert @payment.build_payment_body
+        end
+      end
     end
 
     test 'default body fields' do
-      assert @payment.stubs(:amex?).returns(false)
-      assert_equal default_fields, @payment.default_body_fields.to_hash
+      @payment.stub :amex?, false do
+        assert_equal default_fields, @payment.default_body_fields.to_hash
+      end
     end
 
     test 'default payment body hash' do
-      assert @payment.stubs(:amex?).returns(false)
-      assert expected = default_fields.merge!( non_amex_fields )
-      assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
+      @payment.stub :amex?, false do
+        assert expected = default_fields.merge!( non_amex_fields )
+        assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
+      end
     end
 
     test 'Amex payment body hash' do
-      assert @payment.stub(:amex?).and_return(true)
-      assert expected = default_fields( "titular", "c" ).merge!( amex_fields )
-      assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
+      @payment.stub :amex?, true do
+        assert expected = default_fields( "titular", "c" ).merge!( amex_fields )
+        assert_equal expected.merge(order!: expected.keys), @payment.build_payment_body.to_hash
+      end
     end
 
     test 'payment have reference number' do

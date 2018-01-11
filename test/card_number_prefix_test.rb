@@ -4,8 +4,8 @@ module Dolla
   class CardNumberPrefixTest < ActiveSupport::TestCase
 
     setup do
-      assert @amex_objects = 3.times.map{ FactoryBot.create :amex_card_prefix }
-      assert other = 2.times{  FactoryBot.create :card_number_prefix }
+      assert @amex_objects = 3.times.map{ FactoryBot.build :amex_card_prefix }
+      assert other = 2.times{  FactoryBot.build :card_number_prefix }
     end
 
     test 'is amex scope only returns amex cards' do
