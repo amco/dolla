@@ -1,9 +1,5 @@
-require 'payment_slip/amount'
-require 'payment_slip/due_date'
-
 module Dolla
   class ReferenceNumber
-    include Rails.application.routes.url_helpers
 
     attr_reader :request, :id, :due_date, :amount
 
