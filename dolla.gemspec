@@ -34,7 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.1"
   spec.add_development_dependency "factory_bot"
-  spec.add_runtime_dependency 'activerecord'
+  spec.add_development_dependency "timecop"
+  spec.add_runtime_dependency "activerecord"
   spec.add_dependency 'symbolize'
   spec.add_dependency 'rails'
   spec.add_dependency 'ruby-hmac'
