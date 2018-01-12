@@ -1,14 +1,18 @@
-require "dolla/version"
 require "dolla/configuration"
+require "dolla/version"
 require "savon"
 
 module Dolla
   class << self
-    attr_writer :configuration
+    attr_accessor :configuration
   end
 
   def self.configuration
-    Dolla::Configuration.new
+    @configuration ||= Configuration.new
+  end
+
+  def self.reset
+    @configuration = Configuration.new
   end
 
   def self.configure
