@@ -2,18 +2,18 @@ module Dolla
   module EndPoints
 
     XML_NAMESPACE = {
-      :default  => 'http://webservice.interred.adquira.com.mx',
-      :amex     => 'http://adquira.com.mx/amex/schemas',
+      default: 'http://webservice.interred.adquira.com.mx',
+      amex: 'http://adquira.com.mx/amex/schemas',
     }
 
     PRODUCTION_URL = {
-      :default  => 'https://www.multipagos.com.mx/ProcesaPagosOLW/services/ProcesadorPagos',
-      :amex     => 'https://www.multipagos.com.mx/AmexWS/services/insPagoAmex.wsdl',
+      default: 'https://www.multipagos.com.mx/ProcesaPagosOLW/services/ProcesadorPagos',
+      amex: 'https://www.multipagos.com.mx/AmexWS/services/insPagoAmex.wsdl',
     }
 
     TESTING_URL = {
-      :default  => 'https://www.egbs5.com.mx/ProcesaPagosOLW/services/ProcesadorPagos?WSDL',
-      :amex     => 'https://www.egbs5.com.mx/AmexWS/services/insPagoAmex.wsdl',
+      default: 'https://www.egbs5.com.mx/ProcesaPagosOLW/services/ProcesadorPagos?WSDL',
+      amex: 'https://www.egbs5.com.mx/AmexWS/services/insPagoAmex.wsdl',
     }
 
     WSDL_ADDRESS = Rails.env.production? ? PRODUCTION_URL : TESTING_URL

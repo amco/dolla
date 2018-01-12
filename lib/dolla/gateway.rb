@@ -6,13 +6,13 @@ module Dolla
     include EncryptionTools
 
     ACTIONS = {
-      :default => {
-        :cancel_purchase    => :reverso_tdc_interred,
-        :process_purchase   => :procesa_compra_o_l,
+      default: {
+        cancel_purchase: :reverso_tdc_interred,
+        process_purchase: :procesa_compra_o_l,
       },
 
-      :amex => {
-        :process_purchase   => :ins_pago_amex_request
+      amex: {
+        process_purchase: :ins_pago_amex_request
       }
     }.freeze
 
@@ -23,7 +23,7 @@ module Dolla
                   :email, :card_type_bank_code, :user_agent, :server_address, :bank_account_terms
 
     def pay!
-      request soap_action(:process_purchase), :xmlns => xml_namespace do
+      request soap_action(:process_purchase), xmlns: xml_namespace do
         soap.element_form_default = :qualified
         soap.body = build_payment_body.to_hash
       end
@@ -165,10 +165,10 @@ module Dolla
 
     def encrypted_customer_info
       {
-        :hmac    => build_digest( payment_id, code, decimal_amount, cvv ),
-        :cc      => rijndael_encrypt( card_number ),
-        :cc_exp  => rijndael_encrypt( card_expiration.strftime( '%y%m' ) ),
-        :cc_cvv  => rijndael_encrypt( cvv.to_s ),
+        hmac: build_digest( payment_id, code, decimal_amount, cvv ),
+        cc: rijndael_encrypt( card_number ),
+        cc_exp: rijndael_encrypt( card_expiration.strftime( '%y%m' ) ),
+        cc_cvv: rijndael_encrypt( cvv.to_s ),
       }
     end
 

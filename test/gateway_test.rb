@@ -135,50 +135,50 @@ module Dolla
 
     def amex_fields
       {
-        "tarjetaDigitada"=>@payment.amex_typed_card,
-        "validacionAVS"=>@payment.amex_avs_validation,
-        "tarjetaDeslizada"=> nil,
-        "tarjetaChip"=>nil,
-        "val_20"=>'',
+        "tarjetaDigitada" => @payment.amex_typed_card,
+        "validacionAVS" => @payment.amex_avs_validation,
+        "tarjetaDeslizada" => nil,
+        "tarjetaChip" => nil,
+        "val_20" => '',
       }
     end
 
     def non_amex_fields
       assert visa_card = FactoryBot.build(:visa_card)
       {
-        "val_16"=>visa_card.bank_code,
-        "val_17"=> ENV['TRANSACTION_TYPE'],
-        "val_18"=>'',
-        "email_admin"=>ENV['ADMIN_EMAIL'],
-        "accion"=> 'PAGO',
-        "nu_afiliacion"=>'',
-        "nu_plataforma"=>ENV['PLATFORM'],
-        "TAG5F34"=>'',
-        "TAGSEMV"=>'',
-        "sFlag"=>'',
-        "TAG9F26"=>'',
-        "TAG9F27"=>'',
+        "val_16" => visa_card.bank_code,
+        "val_17" => ENV['TRANSACTION_TYPE'],
+        "val_18" => '',
+        "email_admin" => ENV['ADMIN_EMAIL'],
+        "accion" => 'PAGO',
+        "nu_afiliacion" => '',
+        "nu_plataforma" => ENV['PLATFORM'],
+        "TAG5F34" => '',
+        "TAGSEMV" => '',
+        "sFlag" => '',
+        "TAG9F26" => '',
+        "TAG9F27" => '',
       }
     end
 
     def default_fields name_field = "tarjetabiente", transaction_type = "t"
       {
-        "s_transm"=>@payment.payment_id,
-        "c_referencia"=> @payment.code,
-        "val_1"=>'0',
-        "t_servicio"=>'272',
-        "#{transaction_type}_cur"=>"0",
-        "t_importe"=>@payment.amount.to_s,
-        name_field=>@payment.full_name,
+        "s_transm" => @payment.payment_id,
+        "c_referencia" => @payment.code,
+        "val_1" => '0',
+        "t_servicio" => '272',
+        "#{transaction_type}_cur" => "0",
+        "t_importe" => @payment.amount.to_s,
+        name_field => @payment.full_name,
         "val_3" => @payment.encrypted_customer_info[:cc],
         "val_4" => @payment.encrypted_customer_info[:cc_exp],
         "val_5" => @payment.encrypted_customer_info[:cc_cvv],
         "val_6" => @payment.encrypted_customer_info[:hmac],
         "val_11" => @payment.email,
         "val_12" => @payment.phone_number,
-        "clave_entidad"=>"10894",
-        "val_19"=>0,
-        "val_20"=>1,
+        "clave_entidad" => "10894",
+        "val_19" => 0,
+        "val_20" => 1,
       }
     end
 
