@@ -78,12 +78,12 @@ module Dolla
       body = default_body_fields
 
       body.set_option :card_type, card_type_bank_code
-      body.set_option :transaction_type, ENV['TRANSACTION_TYPE']
+      body.set_option :transaction_type, Dolla.configuration.transaction_type
       body.set_option :track, ''
-      body.set_option :admin_email, ENV['ADMIN_EMAIL']
-      body.set_option :transaction, ENV['PAYMENT']
+      body.set_option :admin_email, Dolla.configuration.admin_email
+      body.set_option :transaction, Dolla.configuration.payment
       body.set_option :afiliation, ''
-      body.set_option :platform, ENV['PLATFORM']
+      body.set_option :platform, Dolla.configuration.platform
 
       %i/card_sequence interred_sequence signature_flag promissory_code promissory_transaction/.each do |opt|
         body.set_option opt, ''
@@ -147,9 +147,9 @@ module Dolla
 
       body.set_option :payment_id, payment_id
       body.set_option :payment_code, code
-      body.set_option :business_unit, ENV['BUSINESS_UNIT']
-      body.set_option :service_type, ENV['PAYMENT_GATEWAY_CODE']
-      body.set_option currency, ENV['CURRENCY']
+      body.set_option :business_unit, Dolla.configuration.business_unit
+      body.set_option :service_type, Dolla.configuration.payment_gateway_code
+      body.set_option currency, Dolla.configuration.currency
       body.set_option :total, decimal_amount
       body.set_option cardholder, full_name
       body.set_option :card_number, encrypted[:cc]
@@ -158,7 +158,7 @@ module Dolla
       body.set_option :digest, encrypted[:hmac]
       body.set_option :client_email, email
       body.set_option :client_phone, phone_number
-      body.set_option :client_id, ENV['CLIENT_ID']
+      body.set_option :client_id, Dolla.configuration.client_id
       body.set_option :payment_plan, payment_plan
       body.set_option :terms, (amex? ? terms : bank_account_terms)
     end

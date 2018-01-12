@@ -4,7 +4,7 @@ require 'crypt/rijndael'
 module Dolla
   module EncryptionTools
     def build_digest *ary
-      sha1  = HMAC::SHA1.new ENV['HMAC_KEY']
+      sha1  = HMAC::SHA1.new Dolla.configuration.hmac_key
       sha1 << ary.join
 
       sha1.to_s
@@ -18,7 +18,7 @@ module Dolla
     end
 
     def rijndael_encrypt( value )
-      rijndael = Crypt::Rijndael.new ENV['RIJNDAEL'], 128
+      rijndael = Crypt::Rijndael.new Dolla.configuration.rijndael_key, 128
       Base64.encode64( rijndael.encrypt_block( padding value ) ).strip
     end
 

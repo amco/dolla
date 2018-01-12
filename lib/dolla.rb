@@ -1,7 +1,20 @@
 require "dolla/version"
+require "dolla/configuration"
 require "savon"
 
 module Dolla
+  class << self
+    attr_writer :configuration
+  end
+
+  def self.configuration
+    Dolla::Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
   autoload :CardNumberPrefix, 'dolla/card_number_prefix'
   autoload :PaymentStub, 'dolla/payment_stub'
   autoload :Gateway, 'dolla/gateway'

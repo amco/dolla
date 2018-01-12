@@ -147,12 +147,12 @@ module Dolla
       assert visa_card = FactoryBot.build(:visa_card)
       {
         "val_16" => visa_card.bank_code,
-        "val_17" => ENV['TRANSACTION_TYPE'],
+        "val_17" => Dolla.configuration.transaction_type,
         "val_18" => '',
-        "email_admin" => ENV['ADMIN_EMAIL'],
+        "email_admin" => Dolla.configuration.admin_email,
         "accion" => 'PAGO',
         "nu_afiliacion" => '',
-        "nu_plataforma" => ENV['PLATFORM'],
+        "nu_plataforma" => Dolla.configuration.platform,
         "TAG5F34" => '',
         "TAGSEMV" => '',
         "sFlag" => '',
