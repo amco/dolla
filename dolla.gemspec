@@ -6,12 +6,12 @@ require "dolla/version"
 Gem::Specification.new do |spec|
   spec.name          = "dolla"
   spec.version       = Dolla::VERSION
-  spec.authors       = ["David Sanchez"]
-  spec.email         = ["sanchez.dav90@gmail.com"]
+  spec.authors       = ["David Sanchez", "Carlos Muniz"]
+  spec.email         = ["sanchez.dav90@gmail.com", "mumo.crls@gmail.com"]
 
   spec.summary       = %q{Dolla module for Agora payments.}
   spec.description   = %q{Dolla is a gem that provide all payments methods to Agora.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/amco/dolla."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
