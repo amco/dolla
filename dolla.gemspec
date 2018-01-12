@@ -41,5 +41,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails'
   spec.add_dependency 'ruby-hmac'
   spec.add_dependency 'crypt19-rb'
-  spec.add_dependency 'savon'
+  spec.add_dependency 'savon', "~> 0.9.14"
 end
