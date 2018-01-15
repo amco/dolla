@@ -7,8 +7,18 @@ module Dolla
     setup do
       # Minimal configuration for encryption tools to work
       Dolla.configure do |config|
-        config.hmac_key = 'HMAC_KEY'
+        config.business_unit = '0'
+        config.payment_gateway_code = '272'
+        config.cancel_gateway_code = '3'
+        config.currency = '0'
+        config.client_id = '10894'
+
+        config.transaction_type = '0'
+        config.platform = '7'
+        config.payment = 'PAGO'
+
         config.rijndael_key = 'RIJNDAEL_KEY'
+        config.hmac_key = 'HMAC_KEY'
       end
 
       assert @payment = Dolla::PaymentStub.new(amount: 200.22)
