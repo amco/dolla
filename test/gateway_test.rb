@@ -5,6 +5,12 @@ module Dolla
   class GatewayTest < ActiveSupport::TestCase
 
     setup do
+      # Minimal configuration for encryption tools to work
+      Dolla.configure do |config|
+        config.hmac_key = 'HMAC_KEY'
+        config.rijndael_key = 'RIJNDAEL_KEY'
+      end
+
       assert @payment = Dolla::PaymentStub.new(amount: 200.22)
     end
 
