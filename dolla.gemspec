@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Sanchez", "Carlos Muniz"]
   spec.email         = ["sanchez.dav90@gmail.com", "mumo.crls@gmail.com"]
 
-  spec.summary       = %q{Dolla module for Agora payments.}
-  spec.description   = %q{Dolla is a gem that provide all payments methods to Agora.}
+  spec.summary       = "Dolla module for Agora payments.""
+  spec.description   = "Dolla is a gem that provide all payments methods to Agora."
   spec.homepage      = "https://github.com/amco/dolla."
   spec.license       = "MIT"
 
