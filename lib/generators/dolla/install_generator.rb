@@ -1,7 +1,8 @@
 module Dolla
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      source_root File.expand_path("../templates", __FILE__)
+      desc "This generator creates an initializer file at config/initializers"
+      source_root File.expand_path("../../templates", __FILE__)
 
       def copy_initializer
         template "dolla_initializer.rb", "config/initializers/dolla.rb"
