@@ -1,3 +1,5 @@
+require "factory_bot"
+
 module Dolla
   class PaymentStub
     include Dolla::Gateway
