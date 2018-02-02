@@ -1,5 +1,3 @@
-require "factory_bot"
-
 module Dolla
   class PaymentStub
     include Dolla::Gateway
@@ -34,7 +32,7 @@ module Dolla
     end
 
     def card_type
-      @card_type ||= FactoryBot.build(:visa_card)
+      @card_type ||= Dolla::CardType.new(name: 'Visa', bank_code: 1)
     end
 
     def card_type_bank_code
