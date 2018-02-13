@@ -18,7 +18,7 @@ module Dolla
     end
 
     def rijndael_encrypt( value )
-      rijndael = Crypt::Rijndael.new Dolla.configuration.rijndael_key, 128
+      rijndael = Crypt::Rijndael.new Base64.decode64(Dolla.configuration.rijndael_key), 128
       Base64.encode64( rijndael.encrypt_block( padding value ) ).strip
     end
 
